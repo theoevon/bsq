@@ -4,7 +4,6 @@ function cloneBoard($array, $rowLength)
 {
     $newArr = array();
     $rowLength += 1;
-    // echo "row Length in cloneBoard: $rowLength\n";
     foreach ($array as $row) {
         for ($i = 0; $i < $rowLength; $i++) {
             if ($row[$i] == "." ){
@@ -20,8 +19,6 @@ function cloneBoard($array, $rowLength)
 
 function check($cell, $topLeft = 0, $top = 0, $left = 0)
 {
-    // echo "Min from [$topLeft, $top, $left] : ".min([$topLeft, $top, $left])."\n";
-    // echo "\$cell == $cell, check returns ".($cell == 0 ? 0 : min([$topLeft, $top, $left]) + 1).PHP_EOL;
     return $cell == 0 ? 0 : min([$topLeft, $top, $left]) + 1;
 }
 
@@ -35,12 +32,10 @@ function maxSquare($array, $rowLength)
 
     $valHeight = count($array);
     $val = array_fill(0, $valHeight, array_fill(0, $rowLength+1, 0));
-    // var_dump($array, $val);
 
     foreach ($array as $y => $row) {
         foreach (str_split($row) as $x => $char) {
             $val[$y][$x] = @intval($char);
-            // echo "FILLED - $x/$y = $char\n";
         }
     }
 
@@ -59,14 +54,10 @@ function maxSquare($array, $rowLength)
             
             $cellValue = @intval($val[$i][$rowIndex]);
 
-            // echo "check cell input: "
             $check = check($val[$rowIndex][$i], $topLeft, $top, $left);
-            // var_dump($check);
-            // echo "$i/$key - $cellValue -> [$topLeft, $top, $left] = $check\n";
             $val[$rowIndex][$i] = $check;
             
             if ($check > $maxNum) {
-                // echo "New biggest: $check at [$i, $rowIndex]\n";
                 $maxNum = $check;
                 $x = $i;
                 $y = $rowIndex;
