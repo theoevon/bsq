@@ -40,13 +40,9 @@ function maxSquare($array, $rowLength)
     }
 
 
-    // print_r($val);
 
     foreach ($val as $key => $row) {
-        // var_dump("ISSOU", $row);
-        // print_r($val[$rowIndex][1]);
         for ($i = 0; $i < $rowLength+1; $i++) {
-            // echo "\n";
             
             $topLeft = isset($val[$rowIndex - 1][$i - 1]) ? $val[$rowIndex - 1][$i - 1] : 0;
             $top = isset($val[$rowIndex - 1][$i]) ? $val[$rowIndex - 1][$i] : 0;
